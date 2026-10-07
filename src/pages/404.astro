@@ -1,0 +1,41 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { withBase } from '../utils/paths';
+---
+
+<SiteLayout title="Página no encontrada" description="La dirección que buscas no está disponible. Vuelve al inicio de Irvanta TECH." redirectTo="/" redirectDelay={5}>
+  <section class="not-found content-shell" aria-labelledby="not-found-title" data-home-url={withBase('/')}>
+    <div class="not-found__visual" aria-hidden="true">
+      <div class="not-found__orbit not-found__orbit--outer"></div>
+      <div class="not-found__orbit not-found__orbit--inner"></div>
+      <span class="not-found__code">404</span>
+      <span class="not-found__signal not-found__signal--one"></span>
+      <span class="not-found__signal not-found__signal--two"></span>
+      <span class="not-found__signal not-found__signal--three"></span>
+    </div>
+
+    <div class="not-found__content">
+      <p class="eyebrow"><span>ERROR 404</span> / RUTA NO DISPONIBLE</p>
+      <h1 id="not-found-title">Este camino<br /><span>no existe.</span></h1>
+      <p class="not-found__description">La dirección puede haber cambiado o ya no estar disponible. Te ayudamos a volver a encontrar el rumbo.</p>
+      <div class="not-found__actions">
+        <a class="button button--dark" href={withBase('/')}>Volver al inicio <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href={withBase('/services')}>Explorar servicios <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="not-found__redirect" aria-live="polite">Volverás al inicio en <span data-redirect-countdown>5</span> segundos.</p>
+    </div>
+  </section>
+
+<script is:inline>
+  const countdown = document.querySelector('[data-redirect-countdown]');
+  const homeUrl = document.querySelector('.not-found')?.getAttribute('data-home-url') || '/';
+  let secondsRemaining = 5;
+  const countdownInterval = window.setInterval(() => {
+    secondsRemaining -= 1;
+    if (countdown) countdown.textContent = String(secondsRemaining);
+    if (secondsRemaining <= 0) window.clearInterval(countdownInterval);
+  }, 1000);
+
+  window.setTimeout(() => window.location.replace(homeUrl), 5000);
+</script>
+</SiteLayout>

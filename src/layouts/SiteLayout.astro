@@ -9,9 +9,11 @@ interface Props {
   title: string;
   description: string;
   activeHref?: string;
+  redirectTo?: string;
+  redirectDelay?: number;
 }
 
-const { title, description, activeHref = '' } = Astro.props;
+const { title, description, activeHref = '', redirectTo, redirectDelay = 5 } = Astro.props;
 const navigationItems = navigation.map((item) => ({ ...item, href: withBase(item.href) }));
 ---
 
@@ -23,6 +25,7 @@ const navigationItems = navigation.map((item) => ({ ...item, href: withBase(item
     <meta name="description" content={description} />
     <meta name="theme-color" content="#182321" />
     <meta name="generator" content={Astro.generator} />
+    {redirectTo && <meta http-equiv="refresh" content={`${redirectDelay};url=${withBase(redirectTo)}`} />}
     <link rel="icon" type="image/svg+xml" href={withBase('/irvanta-mark.svg')} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,7 +34,7 @@ const navigationItems = navigation.map((item) => ({ ...item, href: withBase(item
   </head>
   <body>
     <a class="skip-link" href="#main-content">Saltar al contenido</a>
-    <SiteHeader items={navigationItems} activeHref={withBase(activeHref)} />
+    <SiteHeader items={navigationItems} activeHref={activeHref ? withBase(activeHref) : ''} />
     <main id="main-content"><slot /></main>
     <SiteFooter />
   </body>
