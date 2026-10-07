@@ -485,6 +485,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .founder-cv { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: clamp(3rem, 6vw, 5rem); }
 .founder-cv__column { background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.12); border-radius: 1rem; padding: clamp(1.3rem, 3vw, 2rem); }
 .founder-cv__column h3 { font-size: clamp(1.4rem, 2.6vw, 2.1rem); font-weight: 500; letter-spacing: -.045em; line-height: 1.1; margin: 1rem 0 1.5rem; }
+.founder-cv__intro { color: rgba(255,255,255,.68); font-size: .82rem; line-height: 1.7; margin: -0.5rem 0 1.3rem; max-width: 35rem; }
 .founder-cv__list { list-style: none; margin: 0; padding: 0; }
 .founder-cv__list li { border-top: 1px solid rgba(255,255,255,.13); display: grid; gap: .3rem; padding: .95rem 0; }
 .founder-cv__list strong { color: var(--white); font-size: .88rem; font-weight: 600; line-height: 1.45; }
@@ -494,11 +495,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .founder-recognition__mark { align-items: center; background: var(--signal); border-radius: .75rem; color: var(--ink); display: inline-flex; font-size: .85rem; font-weight: 700; height: 3.1rem; justify-content: center; letter-spacing: .05em; width: 3.1rem; }
 .founder-recognition h3 { font-size: clamp(1.3rem, 2.4vw, 1.9rem); font-weight: 500; letter-spacing: -.04em; line-height: 1.15; margin: .8rem 0; }
 .founder-recognition p:not(.eyebrow) { color: rgba(255,255,255,.72); font-size: .85rem; line-height: 1.7; margin: 0 0 1.2rem; max-width: 55rem; }
+.founder-recognition .founder-recognition__note { color: rgba(255,255,255,.57); font-size: .77rem; }
 .founder-profile .text-link { border-color: rgba(255,255,255,.45); color: var(--white); }
 .founder-profile .text-link span { color: var(--signal); }
 .founder-profile .text-link:hover { border-color: var(--signal); color: var(--signal); }
 .founder-toolkit { border-top: 1px solid rgba(255,255,255,.15); margin-top: 2rem; padding-top: 1.4rem; }
-.founder-toolkit > p:last-child { color: rgba(255,255,255,.72); font-size: .86rem; line-height: 1.8; margin: .7rem 0 0; max-width: 68rem; }
+.founder-toolkit__grid { display: grid; gap: 1.5rem 2.5rem; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 1.2rem; }
+.founder-toolkit__grid p { color: rgba(255,255,255,.69); font-size: .8rem; line-height: 1.7; margin: 0; max-width: 32rem; }
+.founder-toolkit__grid strong { color: var(--signal); display: block; font-size: .86rem; font-weight: 600; margin-bottom: .3rem; }
 
 .legal-page { max-width: 940px; padding-bottom: clamp(5rem, 10vw, 9rem); padding-top: clamp(4rem, 8vw, 7rem); }
 .legal-page h1 { font-size: clamp(3rem, 7vw, 6rem); max-width: none; }
@@ -941,6 +945,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .founder-profile__highlights article + article { border-left: 0; border-top: 1px solid rgba(255,255,255,.15); padding-left: 0; }
   .founder-cv { grid-template-columns: 1fr; }
   .founder-recognition { grid-template-columns: 1fr; }
+  .founder-toolkit__grid { grid-template-columns: 1fr; }
   .legal-section { grid-template-columns: 1fr; gap: .8rem; }
   .footer-main { gap: 2rem 1rem; grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; grid-row: auto; }
