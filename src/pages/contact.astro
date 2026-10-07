@@ -4,23 +4,80 @@ import PageIntro from '../components/PageIntro.astro';
 import { company } from '../data/site';
 ---
 
-<SiteLayout title="Contacto" description="Cuéntanos tu reto o idea y empecemos una conversación con Irvanta TECH." activeHref="/contact">
-  <PageIntro number="05" eyebrow="Contacto" title="Hablemos de lo que viene." description="Describe el reto, la idea o el proceso que quieres mejorar. La primera conversación sirve para ponerlo en claro." />
-  <section class="contact-layout content-shell">
+<SiteLayout title="Contacto" description="Hablemos de tu próximo reto. Conoce también la trayectoria, formación y experiencia del fundador de Irvanta TECH." activeHref="/contact">
+  <PageIntro number="04" eyebrow="Contacto" title="La tecnología avanza. Las buenas conversaciones también." description="Cuéntame qué quieres mejorar. Detrás de Irvanta TECH hay una trayectoria que une matemáticas, datos, tecnología y visión de negocio." />
+
+  <section class="contact-layout content-shell" aria-label="Contacto directo">
     <div class="contact-aside">
-      <p class="eyebrow"><span>CONTACTO DIRECTO</span></p>
-      <a class="contact-email" href={`mailto:${company.email}`}>{company.email}</a>
-      <p class="contact-note">Escríbenos directamente y te responderemos en breve.</p>
-      <span class="contact-coordinate">MADRID / REMOTO</span>
+      <p class="eyebrow"><span>EMPECEMOS POR HABLAR</span></p>
+      <h2>Una idea clara puede ser el comienzo de algo grande.</h2>
+      <p class="contact-note">Cuéntame qué necesita tu negocio. Te responderé personalmente para entender el reto y valorar juntos el siguiente paso.</p>
+      <a class="contact-email" href={`mailto:${company.email}`}>{company.email}<span aria-hidden="true"> ↗</span></a>
     </div>
     <form class="contact-form" data-contact-form data-email={company.email}>
+      <p class="eyebrow"><span>CUÉNTAME TU IDEA</span></p>
       <label>Tu nombre<input name="name" autocomplete="name" required /></label>
-      <label>Correo de trabajo<input name="email" type="email" autocomplete="email" required /></label>
+      <label>Tu correo electrónico<input name="email" type="email" autocomplete="email" required /></label>
       <label>Empresa <span class="optional">OPCIONAL</span><input name="company" autocomplete="organization" /></label>
-      <label>¿Qué necesitas?<textarea name="message" rows="5" required></textarea></label>
+      <label>¿Qué reto quieres resolver?<textarea name="message" rows="5" required></textarea></label>
       <button class="button button--dark" type="submit">Preparar mensaje <span aria-hidden="true">↗</span></button>
-      <p class="form-note">El mensaje se abrirá en tu aplicación de correo; esta web no almacena los datos del formulario.</p>
+      <p class="form-note">Se abrirá tu aplicación de correo con el mensaje preparado. Esta web no almacena los datos del formulario.</p>
     </form>
+  </section>
+
+  <section class="founder-profile" aria-labelledby="founder-title">
+    <div class="content-shell">
+      <div class="founder-profile__intro">
+        <p class="eyebrow"><span>LA PERSONA DETRÁS DE IRVANTA TECH</span></p>
+        <h2 id="founder-title">Del rigor de los datos<br />a construir <span>con propósito.</span></h2>
+        <p>Siempre me ha movido entender cómo funcionan las cosas: primero desde las matemáticas, después desde la tecnología y, finalmente, desde el impacto que ambas pueden tener en un negocio. Irvanta TECH nace para convertir esa curiosidad y esa experiencia en soluciones útiles, cercanas y bien construidas.</p>
+        <p>Mi recorrido entre la universidad y la empresa me enseñó que los datos solo generan valor cuando ayudan a alguien a decidir mejor. Ese es el criterio que quiero llevar a cada proyecto y la razón por la que decidí emprender.</p>
+      </div>
+
+      <div class="founder-profile__highlights" aria-label="Perfil profesional">
+        <article><span>250+</span><p>consultas SQL creadas para ampliar y mejorar el análisis de datos.</p></article>
+        <article><span>2 años</span><p>de experiencia vital y académica en Estados Unidos.</p></article>
+        <article><span>ES / EN</span><p>comunicación profesional en español e inglés.</p></article>
+      </div>
+
+      <div class="founder-cv">
+        <section class="founder-cv__column" aria-labelledby="founder-education">
+          <p class="eyebrow"><span>01 / FORMACIÓN</span></p>
+          <h3 id="founder-education">Una base técnica y de negocio.</h3>
+          <ul class="founder-cv__list">
+            <li><strong>MBA en Business Analytics and Information Technology</strong><span>Lenoir-Rhyne University</span></li>
+            <li><strong>Diploma en Data Science: Machine Learning</strong><span>Harvard University</span></li>
+            <li><strong>Máster en Big Data &amp; Data Analytics</strong></li>
+            <li><strong>Grado en Ingeniería Informática</strong></li>
+          </ul>
+        </section>
+
+        <section class="founder-cv__column" aria-labelledby="founder-experience">
+          <p class="eyebrow"><span>02 / EXPERIENCIA</span></p>
+          <h3 id="founder-experience">Datos, docencia y decisiones.</h3>
+          <ul class="founder-cv__list founder-cv__list--experience">
+            <li><strong>Business Intelligence Engineer <span>· EXKAL</span></strong><span>Procesos ETL con SSIS, análisis para la toma de decisiones y visualización en Qlik y Power BI.</span></li>
+            <li><strong>Senior Data Analyst <span>· Laser Ebro</span></strong><span>Automatización con R, SQL y Python, mantenimiento de bases de datos y dashboards; más de 250 consultas SQL desarrolladas.</span></li>
+            <li><strong>Tutor de Matemáticas y Computer Science; profesor adjunto</strong><span>Lenoir-Rhyne University · acompañamiento académico y docencia en Computer Science.</span></li>
+          </ul>
+        </section>
+      </div>
+
+      <aside class="founder-recognition">
+        <span class="founder-recognition__mark" aria-hidden="true">LR</span>
+        <div>
+          <p class="eyebrow"><span>DISCIPLINA DENTRO Y FUERA DEL AULA</span></p>
+          <h3>El esfuerzo también forma parte de la trayectoria.</h3>
+          <p>Fui reconocido como SAC Men’s Soccer Scholar-Athlete of the Year y Lenoir-Rhyne Scholar-Athlete of the Year. Compaginar el deporte universitario con la excelencia académica reforzó una convicción que hoy sigue guiando mi trabajo: crecer exige constancia, curiosidad y compromiso.</p>
+          <a class="text-link" href="https://lrbears.com/news/2023/12/7/rubio-wins-sac-mens-soccer-scholar-athlete-of-the-year.aspx" target="_blank" rel="noopener noreferrer">Leer el reconocimiento en Lenoir-Rhyne <span aria-hidden="true">↗</span></a>
+        </div>
+      </aside>
+
+      <div class="founder-toolkit">
+        <p class="eyebrow"><span>03 / ENFOQUE Y HERRAMIENTAS</span></p>
+        <p>Data analytics · Business Intelligence · SQL · Python · R · Power BI · Qlik · SSIS · ETL · Machine Learning · Arquitectura en tres capas · Modelado entidad-relación · Metodologías ágiles</p>
+      </div>
+    </div>
   </section>
 </SiteLayout>
 

@@ -1,7 +1,7 @@
 export const company = {
   name: 'Irvanta TECH',
   shortName: 'IRVANTA',
-  email: 'info@irvantatech.com',
+  email: 'info@irvantech.com',
   year: 2026,
 };
 
