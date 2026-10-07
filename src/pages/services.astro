@@ -1,0 +1,66 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { serviceCatalog, solutionCatalog } from '../data/site';
+import { withBase } from '../utils/paths';
+
+const services = serviceCatalog.es;
+const solutions = solutionCatalog.es;
+---
+
+<SiteLayout title="Servicios" description="Desarrollo de software, automatización, datos e IA para empresas que quieren mejorar su operación y acelerar resultados." activeHref="/services">
+  <PageIntro number="01" eyebrow="Qué hacemos" title="Servicios y soluciones" description="Tecnología aplicada a problemas reales: automatización, datos, IA, software y presencia digital." />
+
+  <section class="page-section content-shell service-page">
+    <div class="section-kicker">
+      <p class="eyebrow"><span>Servicios</span></p>
+      <h2>Lo que entregamos para que tu negocio avance.</h2>
+    </div>
+
+    {services.map((service, index) => (
+      <article class="service-detail" id={service.id}>
+        <div class="service-detail__header">
+          <span class="service-detail__index">0{index + 1}</span>
+          <div>
+            <p class="eyebrow"><span>Servicio</span></p>
+            <h2>{service.title}</h2>
+          </div>
+        </div>
+        <div class="service-detail__body">
+          <p>{service.intro}</p>
+          <ul>
+            {service.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </article>
+    ))}
+
+    <div class="section-kicker section-kicker--spaced">
+      <p class="eyebrow"><span>Soluciones</span></p>
+      <h2>Cómo ayudamos a resolver los problemas del día a día.</h2>
+    </div>
+
+    {solutions.map((solution, index) => (
+      <article class="solution-detail" id={solution.id}>
+        <div class="solution-detail__header">
+          <span class="solution-detail__index">0{index + 1}</span>
+          <div>
+            <p class="eyebrow"><span>Solución</span></p>
+            <h2>{solution.title}</h2>
+          </div>
+        </div>
+        <div class="solution-detail__body">
+          <p>{solution.intro}</p>
+          <ul>
+            {solution.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </article>
+    ))}
+
+    <div class="page-cta">
+      <p>¿No tienes claro qué necesitas todavía?</p>
+      <a class="button button--dark" href={withBase('/contact')}>Empezar por una conversación <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+</SiteLayout>

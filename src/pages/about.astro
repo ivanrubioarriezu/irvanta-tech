@@ -1,0 +1,88 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { projectCatalog } from '../data/site';
+
+const projects = projectCatalog.es;
+---
+
+<SiteLayout title="Sobre Irvanta TECH" description="Conoce a Irvanta TECH, su misión, visión, metodología y resultados aplicados en proyectos reales." activeHref="/about">
+  <PageIntro number="02" eyebrow="Sobre Irvanta" title="Tecnología con propósito." description="Irvanta TECH es una empresa tecnológica especializada en el desarrollo de soluciones digitales, datos, automatización e inteligencia artificial." />
+
+  <section class="about-story content-shell">
+    <div class="about-story__lead">
+      <p class="eyebrow"><span>Quiénes somos</span></p>
+      <h2>Una empresa tecnológica<br />al servicio de negocios<br /><span>que quieren crecer con criterio.</span></h2>
+    </div>
+    <div class="about-story__copy">
+      <p>Irvanta TECH ayuda a empresas a transformar procesos, mejorar decisiones y aprovechar la tecnología de una manera práctica, útil y sostenible.</p>
+      <p>Trabajamos con un enfoque claro: entender el problema real, diseñar la solución adecuada y construir tecnología que aporte valor tangible al negocio.</p>
+      <p>Nuestra forma de trabajar combina estrategia, desarrollo y análisis para crear soluciones que no solo funcionen, sino que encajen con la realidad de cada organización.</p>
+    </div>
+  </section>
+
+  <section class="principles-band">
+    <div class="content-shell">
+      <div class="principles-intro">
+        <p class="eyebrow eyebrow--light"><span>Filosofía</span></p>
+        <h3>Propiciamos soluciones útiles, medibles y sostenibles.</h3>
+      </div>
+      <div class="principles-grid">
+        <article><span>01</span><h3>Claridad</h3><p>Objetivos, decisiones y siguientes pasos visibles.</p></article>
+        <article><span>02</span><h3>Utilidad</h3><p>La solución se adapta a las personas y al contexto.</p></article>
+        <article><span>03</span><h3>Responsabilidad</h3><p>Construcción mantenible, segura y pensada a largo plazo.</p></article>
+        <article><span>04</span><h3>Innovación</h3><p>Buscamos la mejor manera de resolver problemas reales.</p></article>
+        <article><span>05</span><h3>Transparencia</h3><p>Comunicamos avances, riesgos y resultados con honestidad.</p></article>
+        <article><span>06</span><h3>Adaptabilidad</h3><p>La tecnología debe acompañar el crecimiento del negocio.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-values content-shell">
+    <div class="about-values__intro">
+      <p class="eyebrow"><span>Cómo trabajamos</span></p>
+      <h3>Nuestra misión y visión</h3>
+    </div>
+    <div class="about-values__grid">
+      <article>
+        <span class="about-values__label">Nuestra misión</span>
+        <p>Ayudar a empresas a aprovechar la tecnología de forma práctica, eficiente y sostenible.</p>
+      </article>
+      <article>
+        <span class="about-values__label">Nuestra visión</span>
+        <p>Crear soluciones tecnológicas que simplifiquen procesos y generen nuevas oportunidades de crecimiento.</p>
+      </article>
+    </div>
+    <div class="about-values__list">
+      <h4>Valores</h4>
+      <ul>
+        <li>Innovación</li>
+        <li>Transparencia</li>
+        <li>Eficiencia</li>
+        <li>Calidad</li>
+        <li>Adaptabilidad</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="portfolio-band">
+    <div class="content-shell">
+      <div class="section-header section-header--split">
+        <p class="eyebrow"><span>Portfolio</span></p>
+        <h2>Casos de impacto.</h2>
+      </div>
+      <div class="portfolio-grid">
+        {projects.map((project) => (
+          <article class="project-card">
+            <div class="project-card__visual project-card__visual--one" aria-hidden="true"></div>
+            <div class="project-card__body">
+              <div class="project-card__meta"><span>{project.category}</span><span>2026</span></div>
+              <h3>{project.name}</h3>
+              <p>{project.summary}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</SiteLayout>

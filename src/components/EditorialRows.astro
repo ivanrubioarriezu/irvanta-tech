@@ -1,0 +1,25 @@
+---
+interface Item {
+  number: string;
+  title: string;
+  description: string;
+  detail?: string;
+}
+
+interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="editorial-rows">
+  {items.map((item) => (
+    <article class="editorial-row">
+      <span class="row-number">{item.number}</span>
+      <h2>{item.title}</h2>
+      <p>{item.description}</p>
+      {item.detail && <span class="row-detail">{item.detail}</span>}
+    </article>
+  ))}
+</div>

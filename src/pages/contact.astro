@@ -1,0 +1,37 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { company } from '../data/site';
+---
+
+<SiteLayout title="Contacto" description="Cuéntanos tu reto o idea y empecemos una conversación con Irvanta TECH." activeHref="/contact">
+  <PageIntro number="05" eyebrow="Contacto" title="Hablemos de lo que viene." description="Describe el reto, la idea o el proceso que quieres mejorar. La primera conversación sirve para ponerlo en claro." />
+  <section class="contact-layout content-shell">
+    <div class="contact-aside">
+      <p class="eyebrow"><span>CONTACTO DIRECTO</span></p>
+      <a class="contact-email" href={`mailto:${company.email}`}>{company.email}</a>
+      <p class="contact-note">Escríbenos directamente y te responderemos en breve.</p>
+      <span class="contact-coordinate">MADRID / REMOTO</span>
+    </div>
+    <form class="contact-form" data-contact-form data-email={company.email}>
+      <label>Tu nombre<input name="name" autocomplete="name" required /></label>
+      <label>Correo de trabajo<input name="email" type="email" autocomplete="email" required /></label>
+      <label>Empresa <span class="optional">OPCIONAL</span><input name="company" autocomplete="organization" /></label>
+      <label>¿Qué necesitas?<textarea name="message" rows="5" required></textarea></label>
+      <button class="button button--dark" type="submit">Preparar mensaje <span aria-hidden="true">↗</span></button>
+      <p class="form-note">El mensaje se abrirá en tu aplicación de correo; esta web no almacena los datos del formulario.</p>
+    </form>
+  </section>
+</SiteLayout>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const fields = new FormData(form);
+    const email = form.dataset.email ?? '';
+    const subject = encodeURIComponent(`Consulta para Irvanta TECH: ${fields.get('company') || fields.get('name')}`);
+    const body = encodeURIComponent(`Nombre: ${fields.get('name')}\nCorreo: ${fields.get('email')}\nEmpresa: ${fields.get('company')}\n\n${fields.get('message')}`);
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+  });
+</script>
