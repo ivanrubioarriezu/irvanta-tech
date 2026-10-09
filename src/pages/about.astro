@@ -1,87 +1,90 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
-import PageIntro from '../components/PageIntro.astro';
-import { projectCatalog } from '../data/site';
-
-const projects = projectCatalog.es;
 ---
 
-<SiteLayout title="Sobre Irvanta TECH" description="Conoce a Irvanta TECH, su misión, visión, metodología y resultados aplicados en proyectos reales." activeHref="/about">
-  <PageIntro number="02" eyebrow="Sobre Irvanta" title="Tecnología con propósito." description="Irvanta TECH es una empresa tecnológica especializada en el desarrollo de soluciones digitales, datos, automatización e inteligencia artificial." />
-
-  <section class="about-story content-shell">
-    <div class="about-story__lead">
-      <p class="eyebrow"><span>Quiénes somos</span></p>
-      <h2>Una empresa tecnológica<br />al servicio de negocios<br /><span>que quieren crecer con criterio.</span></h2>
-    </div>
-    <div class="about-story__copy">
-      <p>Irvanta TECH ayuda a empresas a transformar procesos, mejorar decisiones y aprovechar la tecnología de una manera práctica, útil y sostenible.</p>
-      <p>Trabajamos con un enfoque claro: entender el problema real, diseñar la solución adecuada y construir tecnología que aporte valor tangible al negocio.</p>
-      <p>Nuestra forma de trabajar combina estrategia, desarrollo y análisis para crear soluciones que no solo funcionen, sino que encajen con la realidad de cada organización.</p>
+<SiteLayout title="Sobre Irvanta TECH" description="Conoce la identidad, el equipo y la experiencia detrás de Irvanta TECH, una empresa que crea tecnología útil y soluciones adaptadas a cada negocio." activeHref="/about">
+  <section class="about-hero">
+    <div class="about-hero__mesh" aria-hidden="true"></div>
+    <div class="content-shell about-hero__inner">
+      <div class="about-hero__copy">
+        <p class="eyebrow eyebrow--light"><span>IDENTIDAD / PERSONAS / PROPÓSITO</span></p>
+        <h1>No se trata de sumar tecnología.<br /><span>Se trata de evolucionar.</span></h1>
+        <p>Irvanta TECH nace para convertir retos empresariales en soluciones digitales útiles. Combinamos conocimiento técnico, colaboración y una visión cercana del negocio para construir algo que aporte valor de verdad.</p>
+        <a class="about-hero__link" href="#equipo">Conoce el equipo detrás de Irvanta TECH <span aria-hidden="true">↓</span></a>
+      </div>
+      <figure class="about-hero__visual">
+        <img src="/media/Flujo-transparente.png" alt="Diagrama abstracto de flujos y conexiones tecnológicas en azul" fetchpriority="high" decoding="async" />
+        <figcaption aria-hidden="true">SISTEMAS CONECTADOS · IDEAS EN MOVIMIENTO</figcaption>
+      </figure>
+      <div class="about-hero__coordinates" aria-hidden="true"><span>BUILT AROUND REAL NEEDS</span><span>IRVANTA TECH / 2026</span></div>
     </div>
   </section>
 
-  <section class="principles-band">
+  <section class="about-team" id="equipo">
+    <div class="content-shell about-team__inner">
+      <div class="about-team__copy">
+        <p class="eyebrow eyebrow--light"><span>UN EQUIPO, MUCHAS DISCIPLINAS</span></p>
+        <h2>La perspectiva adecuada para cada reto.</h2>
+        <img class="about-team__image" src="/media/tech.jpg" alt="Instalación tecnológica con fibras de luz azul" loading="lazy" decoding="async" />
+      </div>
+      <div class="about-team__body">
+        <p>Detrás de Irvanta TECH está su fundador, <strong>Iván Rubio</strong>, junto a un equipo colaborativo que reúne el conocimiento adecuado para cada proyecto. Combinamos cercanía y experiencia multidisciplinar para entender cada negocio y dar respuesta a sus necesidades reales.</p>
+        <p>Desde el análisis inicial hasta la implementación, conectamos tecnología y visión empresarial con un objetivo común: crear soluciones útiles, bien integradas y preparadas para evolucionar.</p>
+        <a class="about-team__award" href="https://lrbears.com/news/2023/12/7/rubio-wins-sac-mens-soccer-scholar-athlete-of-the-year.aspx" target="_blank" rel="noopener noreferrer">
+          <span class="about-team__award-icon" aria-hidden="true">✦</span>
+          <span><strong>Premio Scholar-Athlete del Año</strong><small>Iván Rubio · Excelencia académica y deportiva</small></span>
+          <span class="about-team__award-arrow" aria-hidden="true">↗</span>
+        </a>
+        <div class="about-team__principles" aria-label="Nuestra forma de trabajar">
+          <article><span>01</span><div><h3>Comprender</h3><p>Contexto, personas y objetivos.</p></div></article>
+          <article><span>02</span><div><h3>Construir</h3><p>Soluciones proporcionadas y útiles.</p></div></article>
+          <article><span>03</span><div><h3>Evolucionar</h3><p>Mejora continua junto al cliente.</p></div></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="founder-profile about-founder" aria-labelledby="founder-title">
     <div class="content-shell">
-      <div class="principles-intro">
-        <p class="eyebrow eyebrow--light"><span>Filosofía</span></p>
-        <h3>Propiciamos soluciones útiles, medibles y sostenibles.</h3>
+      <div class="about-founder__intro-grid">
+        <div class="founder-profile__intro about-founder__story">
+          <p class="eyebrow"><span>LA PERSONA DETRÁS DE IRVANTA TECH</span></p>
+          <h2 id="founder-title">Una trayectoria guiada por los retos y <span>la curiosidad.</span></h2>
+          <p>Desde las matemáticas —y las olimpiadas que reconocieron esa vocación— hasta la tecnología y la analítica, la trayectoria de <strong>Iván Rubio</strong> ha estado marcada por el interés en comprender problemas complejos y encontrar formas mejores de resolverlos.</p>
+          <p>Ingeniero Informático y Matemático, especializado en Big Data, Data Analytics, Machine Learning y Business Analytics, Iván ha desarrollado su experiencia en docencia, industria y durante tres años en Estados Unidos. Ese recorrido le ha permitido conectar el conocimiento técnico con las necesidades concretas de las organizaciones.</p>
+          <p><strong>Irvanta TECH nace para poner esa experiencia al servicio de las empresas:</strong> escuchar, aportar criterio y construir soluciones digitales que mejoren procesos, decisiones y oportunidades de crecimiento.</p>
+        </div>
+        <figure class="about-founder__portrait">
+          <img src="/media/Ivan%20Premio.jpeg" alt="Iván Rubio con los reconocimientos académicos y deportivos de Lenoir-Rhyne University" loading="lazy" decoding="async" />
+          <figcaption>Iván Rubio · Premio a la Excelencia</figcaption>
+        </figure>
       </div>
-      <div class="principles-grid">
-        <article><span>01</span><h3>Claridad</h3><p>Objetivos, decisiones y siguientes pasos visibles.</p></article>
-        <article><span>02</span><h3>Utilidad</h3><p>La solución se adapta a las personas y al contexto.</p></article>
-        <article><span>03</span><h3>Responsabilidad</h3><p>Construcción mantenible, segura y pensada a largo plazo.</p></article>
-        <article><span>04</span><h3>Innovación</h3><p>Buscamos la mejor manera de resolver problemas reales.</p></article>
-        <article><span>05</span><h3>Transparencia</h3><p>Comunicamos avances, riesgos y resultados con honestidad.</p></article>
-        <article><span>06</span><h3>Adaptabilidad</h3><p>La tecnología debe acompañar el crecimiento del negocio.</p></article>
-      </div>
-    </div>
-  </section>
 
-  <section class="about-values content-shell">
-    <div class="about-values__intro">
-      <p class="eyebrow"><span>Cómo trabajamos</span></p>
-      <h3>Nuestra misión y visión</h3>
-    </div>
-    <div class="about-values__grid">
-      <article>
-        <span class="about-values__label">Nuestra misión</span>
-        <p>Ayudar a empresas a aprovechar la tecnología de forma práctica, eficiente y sostenible.</p>
-      </article>
-      <article>
-        <span class="about-values__label">Nuestra visión</span>
-        <p>Crear soluciones tecnológicas que simplifiquen procesos y generen nuevas oportunidades de crecimiento.</p>
-      </article>
-    </div>
-    <div class="about-values__list">
-      <h4>Valores</h4>
-      <ul>
-        <li>Innovación</li>
-        <li>Transparencia</li>
-        <li>Eficiencia</li>
-        <li>Calidad</li>
-        <li>Adaptabilidad</li>
-      </ul>
-    </div>
-  </section>
+      <div class="founder-cv">
+        <section class="founder-cv__column" aria-labelledby="founder-education">
+          <p class="eyebrow"><span>01 / APRENDER Y PROFUNDIZAR</span></p>
+          <h3 id="founder-education">Una formación construida paso a paso.</h3>
+          <p class="founder-cv__intro">De una base en matemáticas e informática a la ciencia de datos y la estrategia empresarial: cada etapa amplió mi forma de entender los problemas.</p>
+          <ul class="founder-cv__list">
+            <li><strong>Postgrado en Inteligencia Artificial aplicada a la estrategia empresarial</strong><span>Universidad de Navarra (UNAV)</span></li>
+            <li><strong>MBA en Business Analytics and Information Technology</strong><span>Lenoir-Rhyne University</span></li>
+            <li><strong>Diploma en Data Science: Machine Learning</strong><span>Harvard University</span></li>
+            <li><strong>Máster en Big Data &amp; Data Analytics</strong></li>
+            <li><strong>Grado en Ingeniería Informática y Matemáticas</strong></li>
+          </ul>
+        </section>
 
-  <section class="portfolio-band">
-    <div class="content-shell">
-      <div class="section-header section-header--split">
-        <p class="eyebrow"><span>Portfolio</span></p>
-        <h2>Casos de impacto.</h2>
-      </div>
-      <div class="portfolio-grid">
-        {projects.map((project) => (
-          <article class="project-card">
-            <div class="project-card__visual project-card__visual--one" aria-hidden="true"></div>
-            <div class="project-card__body">
-              <div class="project-card__meta"><span>{project.category}</span><span>2026</span></div>
-              <h3>{project.name}</h3>
-              <p>{project.summary}</p>
-            </div>
-          </article>
-        ))}
+        <section class="founder-cv__column" aria-labelledby="founder-experience">
+          <p class="eyebrow"><span>02 / LLEVARLO A LA PRÁCTICA</span></p>
+          <h3 id="founder-experience">Aprender junto a empresas.</h3>
+          <p class="founder-cv__intro">La docencia, la analítica y la ingeniería de datos han reforzado una forma de trabajar que conecta la tecnología con las decisiones del negocio.</p>
+          <ul class="founder-cv__list founder-cv__list--experience">
+            <li><strong>Senior Data Engineer &amp; Data Scientist <span>· Bayer</span></strong><span>Ingeniería de datos y ciencia de datos aplicadas a necesidades analíticas y retos de negocio.</span></li>
+            <li><strong>Business Intelligence Engineer <span>· EXKAL</span></strong><span>Procesos ETL con SSIS, análisis para la toma de decisiones y visualización en Qlik y Power BI.</span></li>
+            <li><strong>Senior Data Analyst <span>· Laser Ebro</span></strong><span>Automatización de procesos de datos con R, SQL y Python, mejora de bases de datos y creación de informes y dashboards.</span></li>
+            <li><strong>Tutor de Matemáticas y Computer Science; profesor adjunto</strong><span>Lenoir-Rhyne University · acompañamiento académico y docencia en Computer Science.</span></li>
+          </ul>
+        </section>
       </div>
     </div>
   </section>

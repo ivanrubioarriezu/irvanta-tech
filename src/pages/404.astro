@@ -1,12 +1,10 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { withBase } from '../utils/paths';
-
-const redirectDelay = 10;
 ---
 
-<SiteLayout title="Página no encontrada" description="La dirección que buscas no está disponible. Vuelve al inicio de Irvanta TECH." redirectTo="/" redirectDelay={redirectDelay}>
-  <section class="not-found content-shell" aria-labelledby="not-found-title" data-home-url={withBase('/')} data-redirect-delay={redirectDelay}>
+<SiteLayout title="Página no encontrada" description="La dirección que buscas no está disponible. Vuelve al inicio de Irvanta TECH.">
+  <section class="not-found not-found--future content-shell" aria-labelledby="not-found-title">
     <div class="not-found__visual" aria-hidden="true">
       <div class="not-found__orbit not-found__orbit--outer"></div>
       <div class="not-found__orbit not-found__orbit--inner"></div>
@@ -24,22 +22,6 @@ const redirectDelay = 10;
         <a class="button button--dark" href={withBase('/')}>Volver al inicio <span aria-hidden="true">↗</span></a>
         <a class="text-link" href={withBase('/services')}>Explorar servicios <span aria-hidden="true">↗</span></a>
       </div>
-      <p class="not-found__redirect" aria-live="polite">Volverás al inicio en <span data-redirect-countdown>10</span> segundos.</p>
     </div>
   </section>
-
-<script is:inline>
-  const countdown = document.querySelector('[data-redirect-countdown]');
-  const notFoundPage = document.querySelector('.not-found');
-  const homeUrl = notFoundPage?.getAttribute('data-home-url') || '/';
-  let secondsRemaining = Number(notFoundPage?.getAttribute('data-redirect-delay') || 10);
-  const redirectDelay = secondsRemaining * 1000;
-  const countdownInterval = window.setInterval(() => {
-    secondsRemaining -= 1;
-    if (countdown) countdown.textContent = String(secondsRemaining);
-    if (secondsRemaining <= 0) window.clearInterval(countdownInterval);
-  }, 1000);
-
-  window.setTimeout(() => window.location.replace(homeUrl), redirectDelay);
-</script>
 </SiteLayout>

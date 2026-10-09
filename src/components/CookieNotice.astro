@@ -1,0 +1,104 @@
+---
+import { withBase } from '../utils/paths';
+
+const analyticsConfigured = /^G-[A-Z0-9]+$/.test(import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? '');
+---
+
+<aside class="cookie-notice" data-cookie-notice data-analytics-configured={analyticsConfigured} hidden aria-label="Preferencias de privacidad">
+  <div class="cookie-notice__copy">
+    <p>Tu privacidad, bajo tu control</p>
+    <span>Usamos una cookie necesaria para guardar tus preferencias. La analítica solo se activa si está disponible y das tu permiso.</span>
+  </div>
+  <div class="cookie-notice__actions">
+    <a href={withBase('/legal/cookies')}>Política de cookies</a>
+    <button type="button" data-cookie-settings>Configurar</button>
+    <button type="button" data-cookie-reject>Rechazar opcionales</button>
+    <button class="cookie-notice__accept" type="button" data-cookie-accept>Aceptar todo</button>
+  </div>
+</aside>
+
+<dialog class="cookie-dialog" data-cookie-dialog aria-labelledby="cookie-dialog-title">
+  <form method="dialog" data-cookie-preferences>
+    <p class="eyebrow"><span>PRIVACIDAD / PREFERENCIAS</span></p>
+    <h2 id="cookie-dialog-title">Elige qué quieres compartir</h2>
+    <p class="cookie-dialog__intro">Puedes cambiar de opinión en cualquier momento desde «Preferencias de cookies» en el pie de página. La preferencia se guarda durante un máximo de 6 meses.</p>
+    <div class="cookie-dialog__category">
+      <div><strong>Necesarias</strong><span>Recuerdan esta elección y permiten guardar tus preferencias. Siempre activas; no se usan para medir visitas.</span></div>
+      <span class="cookie-dialog__always">SIEMPRE ACTIVAS</span>
+    </div>
+    <label class="cookie-dialog__category cookie-dialog__category--optional">
+      <span><strong>Analítica</strong><span>Permitiría medir las páginas visitadas y las consultas enviadas según el motivo elegido.</span></span>
+      <input type="checkbox" data-analytics-consent />
+    </label>
+    <p class="cookie-dialog__status">
+      {analyticsConfigured
+        ? 'Si la activas, Google Analytics medirá visitas y el envío del motivo de consulta. No se enviarán el nombre, el correo ni el texto del mensaje.'
+        : 'Google Analytics aún no está configurado. Guardar esta preferencia no activa mediciones hasta que se conecte el servicio.'}
+    </p>
+    <div class="cookie-dialog__actions">
+      <button class="cookie-dialog__secondary" type="button" data-cookie-clear>Borrar preferencias</button>
+      <button class="cookie-dialog__secondary" type="button" data-cookie-reject>Rechazar opcionales</button>
+      <button class="cookie-notice__accept" type="submit" data-cookie-save>Guardar preferencias</button>
+    </div>
+    <a class="cookie-dialog__policy" href={withBase('/legal/cookies')}>Leer la política de cookies</a>
+  </form>
+</dialog>
+
+<script>
+  const notice = document.querySelector<HTMLElement>('[data-cookie-notice]');
+  const dialog = document.querySelector<HTMLDialogElement>('[data-cookie-dialog]');
+  const preferencesForm = document.querySelector<HTMLFormElement>('[data-cookie-preferences]');
+  const analyticsCheckbox = document.querySelector<HTMLInputElement>('[data-analytics-consent]');
+  const cookieName = 'irvanta_consent';
+  const cookieMaxAge = 60 * 60 * 24 * 180;
+  const secureAttribute = window.location.protocol === 'https:' ? '; Secure' : '';
+  document.cookie = `irvanta_cookie_notice=; Max-Age=0; Path=/; SameSite=Lax${secureAttribute}`;
+  const savedConsent = () => document.cookie.split('; ').find((cookie) => cookie.startsWith(`${cookieName}=`));
+  const storeConsent = (analytics: boolean) => {
+    document.cookie = `${cookieName}=v1.analytics.${analytics ? '1' : '0'}; Max-Age=${cookieMaxAge}; Path=/; SameSite=Lax${secureAttribute}`;
+    document.dispatchEvent(new CustomEvent('irvanta:consent-change', { detail: { analytics } }));
+  };
+  const closeNotice = () => {
+    if (notice) notice.hidden = true;
+  };
+  const rejectOptional = () => {
+    storeConsent(false);
+    if (analyticsCheckbox) analyticsCheckbox.checked = false;
+    dialog?.close();
+    closeNotice();
+  };
+
+  const currentConsent = savedConsent();
+  if (currentConsent && analyticsCheckbox) {
+    analyticsCheckbox.checked = currentConsent.endsWith('analytics.1');
+  } else if (notice) {
+    notice.hidden = false;
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('[data-cookie-settings]').forEach((button) => {
+    button.addEventListener('click', () => dialog?.showModal());
+  });
+
+  document.querySelector<HTMLButtonElement>('[data-cookie-accept]')?.addEventListener('click', () => {
+    storeConsent(true);
+    if (analyticsCheckbox) analyticsCheckbox.checked = true;
+    closeNotice();
+  });
+
+  document.querySelectorAll<HTMLButtonElement>('[data-cookie-reject]').forEach((button) => {
+    button.addEventListener('click', rejectOptional);
+  });
+
+  preferencesForm?.addEventListener('submit', () => {
+    storeConsent(analyticsCheckbox?.checked ?? false);
+    closeNotice();
+  });
+
+  document.querySelector<HTMLButtonElement>('[data-cookie-clear]')?.addEventListener('click', () => {
+    document.cookie = `${cookieName}=; Max-Age=0; Path=/; SameSite=Lax${secureAttribute}`;
+    document.dispatchEvent(new CustomEvent('irvanta:consent-change', { detail: { analytics: false } }));
+    if (analyticsCheckbox) analyticsCheckbox.checked = false;
+    dialog?.close();
+    if (notice) notice.hidden = false;
+  });
+</script>

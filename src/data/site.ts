@@ -276,7 +276,3 @@ export const projectCatalog = {
     },
   ],
 };
-
-export const legalNotice = 'Borrador inicial. Antes de publicar, completa los datos fiscales y de contacto de la sociedad y revisa este texto con asesoría legal.';
-
-export const socialLinks: { label: string; href: string }[] = [];

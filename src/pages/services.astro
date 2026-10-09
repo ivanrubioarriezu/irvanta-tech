@@ -1,66 +1,151 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
-import PageIntro from '../components/PageIntro.astro';
-import { serviceCatalog, solutionCatalog } from '../data/site';
 import { withBase } from '../utils/paths';
-
-const services = serviceCatalog.es;
-const solutions = solutionCatalog.es;
 ---
 
-<SiteLayout title="Servicios" description="Desarrollo de software, automatización, datos e IA para empresas que quieren mejorar su operación y acelerar resultados." activeHref="/services">
-  <PageIntro number="01" eyebrow="Qué hacemos" title="Servicios y soluciones" description="Tecnología aplicada a problemas reales: automatización, datos, IA, software y presencia digital." />
-
-  <section class="page-section content-shell service-page">
-    <div class="section-kicker">
-      <p class="eyebrow"><span>Servicios</span></p>
-      <h2>Lo que entregamos para que tu negocio avance.</h2>
+<SiteLayout title="Servicios y soluciones" description="Software, automatización, datos, inteligencia artificial, desarrollo web y consultoría tecnológica adaptados a las necesidades de cada empresa." activeHref="/services">
+  <section class="services-hero">
+    <div class="services-hero__grid" aria-hidden="true"></div>
+    <div class="content-shell services-hero__inner">
+      <div class="services-hero__intro">
+        <p class="eyebrow eyebrow--light"><span>CAPACIDADES / SOLUCIONES / NEGOCIO</span></p>
+        <h1>Soluciones pensadas para avanzar.</h1>
+        <p>Combinamos conocimiento técnico y visión de negocio para resolver retos concretos con herramientas digitales útiles, claras y preparadas para crecer.</p>
+        <div class="services-hero__signal" aria-label="Áreas de trabajo">
+          <span>SOFTWARE</span><span>DATA</span><span>AUTOMATION</span><span>AI</span>
+        </div>
+      </div>
     </div>
+  </section>
 
-    {services.map((service, index) => (
-      <article class="service-detail" id={service.id}>
-        <div class="service-detail__header">
-          <span class="service-detail__index">0{index + 1}</span>
-          <div>
-            <p class="eyebrow"><span>Servicio</span></p>
-            <h2>{service.title}</h2>
+  <section class="services-detail" aria-labelledby="services-detail-title">
+    <div class="content-shell">
+      <header class="services-detail__header">
+        <p class="eyebrow"><span>SEIS ÁREAS / UN ENFOQUE A MEDIDA</span></p>
+        <h2 id="services-detail-title">Tecnología útil para retos reales.</h2>
+        <p>Desde una tarea que consume tiempo hasta una transformación digital más amplia, abordamos cada reto desde lo que necesita tu empresa.</p>
+      </header>
+
+      <div class="services-detail__list">
+        <article class="service-detail-row service-detail-row--image" id="software">
+          <div class="service-detail-row__content">
+            <span class="service-detail-row__number">01 / SOFTWARE</span>
+            <h3>Desarrollo de software</h3>
+            <p>Creamos aplicaciones web, herramientas internas y sistemas personalizados que encajan con la forma de trabajar de tu empresa. Conectamos datos y plataformas para reducir fricciones, con una base preparada para evolucionar.</p>
+            <ul class="service-detail-row__points">
+              <li>Aplicaciones y herramientas empresariales</li>
+              <li>APIs e integración de sistemas</li>
+              <li>Software a medida y escalable</li>
+            </ul>
           </div>
-        </div>
-        <div class="service-detail__body">
-          <p>{service.intro}</p>
-          <ul>
-            {service.items.map((item) => <li>{item}</li>)}
-          </ul>
-        </div>
-      </article>
-    ))}
+          <figure class="service-detail-row__visual">
+            <img src="/media/dashboard.jpeg" alt="Entorno digital de desarrollo de software con interfaces y sistemas conectados" width="2048" height="2048" loading="lazy" decoding="async" />
+            <figcaption>Software diseñado alrededor de tu operativa.</figcaption>
+          </figure>
+        </article>
 
-    <div class="section-kicker section-kicker--spaced">
-      <p class="eyebrow"><span>Soluciones</span></p>
-      <h2>Cómo ayudamos a resolver los problemas del día a día.</h2>
+        <article class="service-detail-row" id="automation">
+          <div class="service-detail-row__content">
+            <span class="service-detail-row__number">02 / AUTOMATIZACIÓN</span>
+            <h3>Automatización</h3>
+            <p>Convertimos tareas repetitivas en procesos conectados y fiables. Integramos las herramientas que ya utiliza el equipo y automatizamos pasos manuales para liberar tiempo y reducir errores.</p>
+            <ul class="service-detail-row__points">
+              <li>Flujos administrativos y operativos</li>
+              <li>Conexión entre herramientas</li>
+              <li>Informes, avisos y tareas recurrentes</li>
+            </ul>
+          </div>
+          <aside class="service-detail-row__focus">
+            <span>MENOS TAREA MANUAL</span>
+            <strong>Más tiempo para el trabajo que aporta valor.</strong>
+            <p>Automatizaciones prácticas que acompañan los procesos existentes, sin añadir complejidad innecesaria.</p>
+          </aside>
+        </article>
+
+        <article class="service-detail-row service-detail-row--image service-detail-row--reverse" id="data">
+          <div class="service-detail-row__content">
+            <span class="service-detail-row__number">03 / DATOS &amp; ANALYTICS</span>
+            <h3>Datos &amp; Analytics</h3>
+            <p>Organizamos y transformamos datos para ofrecer una visión clara del negocio. Desde la integración de fuentes hasta dashboards e informes, facilitamos decisiones basadas en información útil y actualizada.</p>
+            <ul class="service-detail-row__points">
+              <li>Dashboards y Power BI</li>
+              <li>SQL, ETL/ELT y pipelines</li>
+              <li>Calidad de datos y reporting</li>
+            </ul>
+          </div>
+          <figure class="service-detail-row__visual">
+            <img src="/media/solutions.jpeg" alt="Dashboard analítico con gráficos e indicadores empresariales" width="1024" height="1024" loading="lazy" decoding="async" />
+            <figcaption>Datos claros para decidir con perspectiva.</figcaption>
+          </figure>
+        </article>
+
+        <article class="service-detail-row" id="ai">
+          <div class="service-detail-row__content">
+            <span class="service-detail-row__number">04 / INTELIGENCIA ARTIFICIAL</span>
+            <h3>Inteligencia Artificial</h3>
+            <p>Integramos inteligencia artificial en situaciones donde puede mejorar el trabajo diario: encontrar información, procesar documentos o asistir a los equipos, siempre con un propósito definido.</p>
+            <ul class="service-detail-row__points">
+              <li>Asistentes internos y chatbots</li>
+              <li>Procesamiento de documentos</li>
+              <li>IA conectada a procesos y herramientas</li>
+            </ul>
+          </div>
+          <aside class="service-detail-row__focus">
+            <span>IA CON PROPÓSITO</span>
+            <strong>Tecnología útil, integrada con criterio.</strong>
+            <p>Partimos de un caso de uso concreto y cuidamos la integración, el control y la utilidad para las personas.</p>
+          </aside>
+        </article>
+
+        <article class="service-detail-row" id="web">
+          <div class="service-detail-row__content">
+            <span class="service-detail-row__number">05 / WEB &amp; DIGITAL</span>
+            <h3>Web &amp; Digital</h3>
+            <p>Diseñamos y desarrollamos experiencias digitales profesionales alineadas con la marca y los objetivos de cada empresa. Acompañamos el proyecto con visibilidad en buscadores y soporte continuo.</p>
+            <ul class="service-detail-row__points">
+              <li>Web corporativa, landing pages y e-commerce</li>
+              <li>SEO y campañas SEA</li>
+              <li>Rendimiento, mantenimiento y evolución</li>
+            </ul>
+          </div>
+          <aside class="service-detail-row__focus">
+            <span>PRESENCIA DIGITAL</span>
+            <strong>Una experiencia coherente de principio a fin.</strong>
+            <p>Diseño, desarrollo, posicionamiento y mantenimiento dentro de una solución conectada.</p>
+          </aside>
+        </article>
+
+        <article class="service-detail-row" id="consulting">
+          <div class="service-detail-row__content">
+            <span class="service-detail-row__number">06 / CONSULTORÍA</span>
+            <h3>Consultoría tecnológica</h3>
+            <p>Analizamos cómo trabaja tu empresa y qué necesita para avanzar. Definimos prioridades, herramientas y una hoja de ruta realista para que cada decisión tecnológica responda a un objetivo de negocio.</p>
+            <ul class="service-detail-row__points">
+              <li>Diagnóstico y digitalización</li>
+              <li>Estrategia de datos y arquitectura</li>
+              <li>Selección de herramientas y prioridades</li>
+            </ul>
+          </div>
+          <aside class="service-detail-row__focus">
+            <span>DECISIONES CON CRITERIO</span>
+            <strong>Un siguiente paso claro, no más tecnología por añadir.</strong>
+            <p>Recomendaciones prácticas, ajustadas a la situación, los recursos y los objetivos de tu organización.</p>
+          </aside>
+        </article>
+      </div>
     </div>
+  </section>
 
-    {solutions.map((solution, index) => (
-      <article class="solution-detail" id={solution.id}>
-        <div class="solution-detail__header">
-          <span class="solution-detail__index">0{index + 1}</span>
-          <div>
-            <p class="eyebrow"><span>Solución</span></p>
-            <h2>{solution.title}</h2>
-          </div>
-        </div>
-        <div class="solution-detail__body">
-          <p>{solution.intro}</p>
-          <ul>
-            {solution.items.map((item) => <li>{item}</li>)}
-          </ul>
-        </div>
-      </article>
-    ))}
-
-    <div class="page-cta">
-      <p>¿No tienes claro qué necesitas todavía?</p>
-      <a class="button button--dark" href={withBase('/contact')}>Empezar por una conversación <span aria-hidden="true">↗</span></a>
+  <section class="services-fit">
+    <div class="content-shell services-fit__inner">
+      <div>
+        <p class="eyebrow eyebrow--light"><span>DISEÑADAS A TU MEDIDA</span></p>
+        <h2>La tecnología adecuada empieza por entender tu negocio.</h2>
+      </div>
+      <div class="services-fit__copy">
+        <p>Cada empresa tiene objetivos, procesos y recursos distintos. Por eso, cada solución se define contigo y se adapta a las necesidades reales de tu negocio.</p>
+        <a class="button button--signal" href={withBase('/contact')}>Hablemos de tu proyecto <span aria-hidden="true">↗</span></a>
+      </div>
     </div>
   </section>
 </SiteLayout>

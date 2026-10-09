@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import CookieNotice from '../components/CookieNotice.astro';
+import Analytics from '../components/Analytics.astro';
 import { company, navigation } from '../data/site';
 import { withBase } from '../utils/paths';
 
@@ -23,7 +25,7 @@ const navigationItems = navigation.map((item) => ({ ...item, href: withBase(item
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#182321" />
+    <meta name="theme-color" content="#071426" />
     <meta name="generator" content={Astro.generator} />
     {redirectTo && <meta http-equiv="refresh" content={`${redirectDelay};url=${withBase(redirectTo)}`} />}
     <link rel="icon" type="image/x-icon" href={withBase('/favicon.ico')} />
@@ -37,5 +39,7 @@ const navigationItems = navigation.map((item) => ({ ...item, href: withBase(item
     <SiteHeader items={navigationItems} activeHref={activeHref ? withBase(activeHref) : ''} />
     <main id="main-content"><slot /></main>
     <SiteFooter />
+    <CookieNotice />
+    <Analytics />
   </body>
 </html>

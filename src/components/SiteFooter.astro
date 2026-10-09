@@ -1,5 +1,5 @@
 ---
-import { company, legalNavigation, socialLinks } from '../data/site';
+import { company, legalNavigation } from '../data/site';
 import { withBase } from '../utils/paths';
 ---
 
@@ -16,18 +16,15 @@ import { withBase } from '../utils/paths';
       <p class="footer-label">Legal</p>
       {legalNavigation.map((item) => <a href={withBase(item.href)}>{item.label}</a>)}
     </div>
-    <div class="footer-column">
+    <div class="footer-column footer-contact">
       <p class="footer-label">Contacto</p>
       <a href={withBase('/contact')}>Iniciar una conversación ↗</a>
       <a href={`mailto:${company.email}`}>{company.email}</a>
     </div>
-    <div class="footer-column">
-      <p class="footer-label">Redes sociales</p>
-      {socialLinks.length ? socialLinks.map((item) => <a href={item.href} target="_blank" rel="noopener noreferrer">{item.label} ↗</a>) : <span class="footer-pending">En preparación</span>}
-    </div>
   </div>
   <div class="footer-bottom">
     <span>© {company.year} Irvanta TECH</span>
-    <span>Diseñado para avanzar.</span>
+    <span>Tecnología para ir un paso más allá</span>
+    <button type="button" data-cookie-settings>Preferencias de cookies</button>
   </div>
 </footer>

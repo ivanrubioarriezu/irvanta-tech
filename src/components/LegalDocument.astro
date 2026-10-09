@@ -1,6 +1,5 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
-import { legalNotice } from '../data/site';
 
 interface Props {
   title: string;
@@ -13,16 +12,17 @@ const { title, description, activeHref, sections } = Astro.props;
 ---
 
 <SiteLayout title={title} description={description} activeHref={activeHref}>
-  <article class="legal-page content-shell">
-    <p class="eyebrow"><span>IRVANTA TECH</span> / DOCUMENTACIÓN</p>
-    <h1>{title}</h1>
-    <p class="legal-notice">{legalNotice}</p>
-    <p class="legal-updated">Borrador de lanzamiento · Octubre de 2026</p>
-    {sections.map((section, index) => (
-      <section class="legal-section">
-        <h2><span>{String(index + 1).padStart(2, '0')}</span>{section.title}</h2>
-        <div>{section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}</div>
-      </section>
-    ))}
-  </article>
+  <div class="legal-surface">
+    <article class="legal-page content-shell">
+      <p class="eyebrow eyebrow--light"><span>IRVANTA TECH</span> / DOCUMENTACIÓN</p>
+      <h1>{title}</h1>
+      <p class="legal-updated">Última actualización: 9 de octubre de 2026</p>
+      {sections.map((section, index) => (
+        <section class="legal-section">
+          <h2><span>{String(index + 1).padStart(2, '0')}</span>{section.title}</h2>
+          <div>{section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}</div>
+        </section>
+      ))}
+    </article>
+  </div>
 </SiteLayout>
