@@ -31,6 +31,8 @@ jobs:
         env:
           PUBLIC_GA_MEASUREMENT_ID: G-9NLP1VTQZQ
         run: npm run build
+      - name: Verify SEO files
+        run: test -s dist/robots.txt && test -s dist/sitemap.xml
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
