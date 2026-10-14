@@ -1,6 +1,6 @@
 # Irvanta TECH
 
-Sitio corporativo inicial construido con Astro.
+Sitio Web corporativo.
 
 ## Desarrollo
 
