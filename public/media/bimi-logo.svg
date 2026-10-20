@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny-ps" width="1000" height="1000" viewBox="0 0 1000 1000">
+  <title>Irvanta Tech</title>
+  <rect width="1000" height="1000" fill="#080808"/>
+  <path d="M120 380 370 120v600L120 900z" fill="#fff"/>
+  <path d="m370 330 140-210h390L740 340H470l-80-80z" fill="#ed1c24"/>
+  <path d="M470 450h180v450L470 720z" fill="#fff"/>
+</svg>

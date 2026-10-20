@@ -1,0 +1,95 @@
+CONFIGURACION DE BIMI - IRVANTA TECH
+
+ARCHIVO DE LOGO
+
+Este directorio contiene bimi-logo.svg. Cuando el sitio se publique, su URL
+publica sera:
+https://irvantatech.com/media/bimi-logo.svg
+
+Es un SVG vectorial cuadrado, sin texto, fuentes, scripts ni recursos externos.
+Se ha redibujado el simbolo a partir del logotipo disponible en este proyecto.
+Antes de usarlo en produccion, pide a la autoridad de certificacion (CA) que
+confirme que cumple su perfil SVG BIMI y que acepta este diseno.
+
+PASOS QUE FALTAN
+
+En el listado DNS compartido para este dominio no aparecen registros DMARC ni
+BIMI. Comprueba en Cloudflare que no existan antes de crearlos.
+
+1. Verifica primero todos los servicios que envian correo usando
+   @irvantatech.com. El SPF compartido actualmente es:
+
+   v=spf1 include:_spf.mx.cloudflare.net ~all
+
+   Ese registro solo muestra la autorizacion de Cloudflare. Confirma en los
+   paneles de SMTP2GO y de cualquier otro proveedor de envio si necesitan
+   autorizarse en SPF y/o publicar DKIM. Si es asi, modifica este unico registro
+   SPF con los valores exactos que indique cada proveedor. No crees un segundo
+   TXT que empiece por v=spf1. Los registros DKIM existentes no sustituyen la
+   comprobacion de SPF, DMARC y alineacion.
+
+2. Crea un TXT de DMARC para empezar a observar los envios sin ponerlos en
+   cuarentena:
+
+   Nombre/host: _dmarc
+   Tipo:        TXT
+   Valor:       v=DMARC1; p=none; pct=100
+
+   Si quieres recibir informes agregados, puedes anadir una etiqueta
+   rua=mailto:direccion-real@irvantatech.com usando un buzon o servicio que
+   realmente exista, por ejemplo:
+
+   v=DMARC1; p=none; pct=100; rua=mailto:dmarc@irvantatech.com
+
+   No uses esa direccion de ejemplo si no has creado el buzon. Verifica los
+   envios de prueba y, si configuraste rua, revisa los informes. Cuando los
+   envios legitimos pasen DMARC (SPF o DKIM alineado con irvantatech.com),
+   cambia el valor del mismo registro a:
+
+   v=DMARC1; p=quarantine; pct=100
+
+   BIMI requiere una politica aplicada p=quarantine o p=reject con pct=100.
+   Empieza con quarantine; pasa a reject solo si has validado todos los envios.
+   No crees un segundo registro _dmarc. Si ya existe, edita el que hay. No
+   anadas direcciones rua inventadas: solo configura informes si dispones de un
+   buzon o servicio preparado para recibirlos.
+
+3. Solicita un VMC o CMC a una CA que los emita para BIMI. La CA te indicara
+   si el logotipo debe cumplir requisitos adicionales, como registro de marca,
+   y te entregara el certificado PEM correspondiente. No se puede crear ese
+   certificado desde este proyecto; debe estar firmado y validado por la CA.
+   Algunos proveedores de correo solo muestran logos con VMC.
+
+4. Sube el PEM emitido por la CA a este directorio con un nombre estable, por
+   ejemplo bimi-vmc.pem. Tras publicar el sitio, comprueba que la URL publica
+   (por ejemplo https://irvantatech.com/media/bimi-vmc.pem) sea accesible por
+   HTTPS, devuelva el certificado y no requiera inicio de sesion ni redirecciones
+   inesperadas. Sigue las instrucciones de la CA sobre archivos adicionales.
+
+5. Cuando tengas la URL publica definitiva del certificado, crea en Cloudflare
+   un registro TXT:
+
+   Nombre/host: default._bimi
+   Tipo:        TXT
+   Valor:       v=BIMI1; l=https://irvantatech.com/media/bimi-logo.svg; a=https://irvantatech.com/media/bimi-vmc.pem
+
+   Si la CA entrega el certificado en otra URL, sustituye la URL de a= por la
+   URL publica definitiva. En Cloudflare, escribe normalmente default._bimi
+   como nombre; el panel agrega irvantatech.com. No publiques el registro con
+   una ruta temporal.
+
+6. Espera la propagacion del DNS y valida el SVG, el certificado, DMARC y el
+   registro BIMI con las herramientas de validacion de la CA o del proveedor de
+   correo. BIMI no garantiza que todos los buzones muestren el logo: depende
+   tambien de las politicas de cada proveedor.
+
+NOTAS
+
+- La carpeta public/media se publica como /media en la web. El archivo SVG ya
+  esta preparado; aun no hay un certificado PEM y el registro BIMI no se ha
+  creado en DNS.
+- La lista DNS que compartiste no incluye DMARC ni BIMI; confirma en Cloudflare
+  que siguen ausentes antes de crearlos.
+- Conserva el archivo PEM en un repositorio publico solo si la CA y tu politica
+  de seguridad lo permiten; los certificados BIMI son publicos, pero la clave
+  privada nunca debe publicarse.
