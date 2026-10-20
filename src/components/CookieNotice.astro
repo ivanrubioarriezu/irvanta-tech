@@ -10,7 +10,7 @@ const analyticsConfigured = /^G-[A-Z0-9]+$/.test(import.meta.env.PUBLIC_GA_MEASU
     <span>Usamos una cookie necesaria para guardar tus preferencias. La analítica solo se activa si está disponible y das tu permiso.</span>
   </div>
   <div class="cookie-notice__actions">
-    <a href={withBase('/legal/cookies')}>Política de cookies</a>
+    <a href={withBase('/legal/cookies/')}>Política de cookies</a>
     <button type="button" data-cookie-settings>Configurar</button>
     <button type="button" data-cookie-reject>Rechazar opcionales</button>
     <button class="cookie-notice__accept" type="button" data-cookie-accept>Aceptar todo</button>
@@ -40,7 +40,7 @@ const analyticsConfigured = /^G-[A-Z0-9]+$/.test(import.meta.env.PUBLIC_GA_MEASU
       <button class="cookie-dialog__secondary" type="button" data-cookie-reject>Rechazar opcionales</button>
       <button class="cookie-notice__accept" type="submit" data-cookie-save>Guardar preferencias</button>
     </div>
-    <a class="cookie-dialog__policy" href={withBase('/legal/cookies')}>Leer la política de cookies</a>
+    <a class="cookie-dialog__policy" href={withBase('/legal/cookies/')}>Leer la política de cookies</a>
   </form>
 </dialog>
 

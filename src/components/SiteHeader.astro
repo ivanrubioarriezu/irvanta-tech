@@ -7,7 +7,7 @@ interface Props {
 }
 
 const { items, activeHref = '' } = Astro.props;
-const isContactPage = activeHref === withBase('/contact');
+const isContactPage = activeHref === withBase('/contact/');
 ---
 
 <header class="site-header">
@@ -20,7 +20,7 @@ const isContactPage = activeHref === withBase('/contact');
       <a href={item.href} aria-current={activeHref === item.href ? 'page' : undefined}>{item.label}</a>
     ))}
   </nav>
-  {!isContactPage && <a class="header-contact" href={withBase('/contact')}>Hablemos <span aria-hidden="true">↗</span></a>}
+  {!isContactPage && <a class="header-contact" href={withBase('/contact/')}>Hablemos <span aria-hidden="true">↗</span></a>}
   <details class="mobile-menu">
     <summary aria-label="Abrir menú"><span></span><span></span><span></span></summary>
     <nav aria-label="Navegación móvil">

@@ -3,7 +3,7 @@ import SiteLayout from '../layouts/SiteLayout.astro';
 import { withBase } from '../utils/paths';
 ---
 
-<SiteLayout title="Servicios y soluciones" description="Software, automatización, datos, inteligencia artificial, desarrollo web y consultoría tecnológica adaptados a las necesidades de cada empresa." activeHref="/services">
+<SiteLayout title="Servicios y soluciones" description="Software, automatización, datos, inteligencia artificial, desarrollo web y consultoría tecnológica adaptados a las necesidades de cada empresa." activeHref="/services/">
   <section class="services-hero">
     <div class="services-hero__grid" aria-hidden="true"></div>
     <div class="content-shell services-hero__inner">
@@ -144,7 +144,7 @@ import { withBase } from '../utils/paths';
       </div>
       <div class="services-fit__copy">
         <p>Cada empresa tiene objetivos, procesos y recursos distintos. Por eso, cada solución se define contigo y se adapta a las necesidades reales de tu negocio.</p>
-        <a class="button button--signal" href={withBase('/contact')}>Hablemos de tu proyecto <span aria-hidden="true">↗</span></a>
+        <a class="button button--signal" href={withBase('/contact/')}>Hablemos de tu proyecto <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>

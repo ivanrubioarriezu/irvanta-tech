@@ -7,16 +7,16 @@ export const company = {
 
 export const navigation = [
   { label: 'Inicio', href: '/' },
-  { label: 'Servicios', href: '/services' },
-  { label: 'Sobre Irvanta TECH', href: '/about' },
-  { label: 'Contacto', href: '/contact' },
+  { label: 'Servicios', href: '/services/' },
+  { label: 'Sobre Irvanta TECH', href: '/about/' },
+  { label: 'Contacto', href: '/contact/' },
 ];
 
 export const legalNavigation = [
-  { label: 'Aviso legal', href: '/legal/aviso-legal' },
-  { label: 'Privacidad', href: '/legal/privacidad' },
-  { label: 'Cookies', href: '/legal/cookies' },
-  { label: 'Términos y condiciones', href: '/legal/terminos' },
+  { label: 'Aviso legal', href: '/legal/aviso-legal/' },
+  { label: 'Privacidad', href: '/legal/privacidad/' },
+  { label: 'Cookies', href: '/legal/cookies/' },
+  { label: 'Términos y condiciones', href: '/legal/terminos/' },
 ];
 
 export const services = [
