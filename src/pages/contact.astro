@@ -22,7 +22,7 @@ import { company } from '../data/site';
         <div class="contact-future__availability"><span aria-hidden="true"></span> Un equipo preparado para ayudarte</div>
       </div>
 
-      <form class="contact-future__form" data-contact-form data-email={company.email}>
+      <form class="contact-future__form" data-contact-form>
         <div class="contact-future__form-heading">
           <span>INICIAR UNA CONVERSACIÓN</span>
           <span>01 — 04</span>
@@ -46,8 +46,11 @@ import { company } from '../data/site';
           <label>Correo electrónico<input name="email" type="email" autocomplete="email" placeholder="nombre@empresa.com" required /></label>
         </div>
         <label>Cuéntanos brevemente<textarea name="message" rows="4" placeholder="¿Qué reto te gustaría resolver?" required></textarea></label>
-        <button class="contact-future__submit" type="submit">Preparar consulta <span aria-hidden="true">↗</span></button>
-        <p class="contact-future__note">Se abrirá tu aplicación de correo con el mensaje preparado. No almacenamos la información enviada.</p>
+        <button class="contact-future__submit" type="submit">
+          <span data-submit-label>Enviar formulario</span>
+          <span aria-hidden="true">↗</span>
+        </button>
+        <p class="contact-future__note" data-contact-status role="status" aria-live="polite">Al enviar, tu consulta llegará directamente a nuestro equipo.</p>
       </form>
     </div>
     <div class="contact-future__footer content-shell" aria-hidden="true"><span>TECNOLOGÍA CON PROPÓSITO</span><span>IRVANTA TECH · EST. 2026</span></div>
@@ -55,21 +58,51 @@ import { company } from '../data/site';
 </SiteLayout>
 
 <script>
+  import emailjs from '@emailjs/browser';
+
+  const emailjsServiceId = 'IrvantaTech';
+  const emailjsTemplateId = 'IrvantaTemplate';
+  const emailjsPublicKey = 't4fkUKvk-v_axvi7g';
   const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
-  form?.addEventListener('submit', (event) => {
+  form?.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const fields = new FormData(form);
-    const email = form.dataset.email;
-    if (!email) {
-      throw new Error('Falta el correo corporativo de destino del formulario.');
+    const submitButton = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const submitLabel = form.querySelector<HTMLElement>('[data-submit-label]');
+    const status = form.querySelector<HTMLElement>('[data-contact-status]');
+    const topic = new FormData(form).get('topic');
+
+    if (!submitButton || !submitLabel || !status) {
+      throw new Error('No se ha podido preparar el formulario de contacto.');
     }
-    const topic = fields.get('topic');
+
     if (typeof topic !== 'string' || !topic) {
-      throw new Error('Selecciona el motivo de contacto antes de preparar la consulta.');
+      status.classList.add('is-error');
+      status.textContent = 'Selecciona el motivo de contacto antes de enviar el formulario.';
+      return;
     }
+
+    submitButton.disabled = true;
+    submitLabel.textContent = 'Enviando...';
+    status.classList.remove('is-success', 'is-error');
+    status.textContent = 'Enviando tu consulta...';
+
+    try {
+      await emailjs.sendForm(emailjsServiceId, emailjsTemplateId, form, {
+        publicKey: emailjsPublicKey,
+      });
+    } catch (error) {
+      console.error('No se ha podido enviar el formulario de contacto.', error);
+      status.classList.add('is-error');
+      status.textContent = 'No hemos podido enviar tu consulta. Inténtalo de nuevo o contacta con nosotros por correo electrónico.';
+      return;
+    } finally {
+      submitButton.disabled = false;
+      submitLabel.textContent = 'Enviar formulario';
+    }
+
+    form.reset();
+    status.classList.add('is-success');
+    status.textContent = 'Hemos recibido tu mensaje correctamente. Nos pondremos en contacto contigo lo antes posible. Gracias por contactar con Irvanta TECH.';
     window.dispatchEvent(new CustomEvent('irvanta:contact-request', { detail: { topic } }));
-    const subject = encodeURIComponent(`${topic} | Consulta para Irvanta TECH`);
-    const body = encodeURIComponent(`Motivo: ${fields.get('topic')}\nNombre: ${fields.get('name')}\nCorreo: ${fields.get('email')}\n\n${fields.get('message')}`);
-    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
   });
 </script>

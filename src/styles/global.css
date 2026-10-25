@@ -1227,7 +1227,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .contact-future__fields { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; }
 .contact-future__submit { align-items: center; background: linear-gradient(100deg, #56b8ff, #89d8ff); border: 0; border-radius: .5rem; color: #07182a; cursor: pointer; display: flex; font-size: .85rem; font-weight: 650; gap: .7rem; justify-content: center; min-height: 3rem; padding: .75rem 1rem; transition: box-shadow .2s ease, transform .2s ease; }
 .contact-future__submit:hover { box-shadow: 0 8px 26px rgba(76, 176, 255, .22); transform: translateY(-2px); }
+.contact-future__submit:disabled { cursor: wait; opacity: .7; transform: none; }
 .contact-future__note { color: rgba(190, 214, 240, .48); font-size: .67rem; line-height: 1.6; margin: -.55rem 0 0; text-align: center; }
+.contact-future__note.is-success { color: #9ce5c9; }
+.contact-future__note.is-error { color: #ffb4a9; }
 .contact-future__footer { color: rgba(190, 218, 247, .38); display: flex; font: .56rem var(--font-mono); justify-content: space-between; letter-spacing: .1em; padding-bottom: 1.2rem; width: 100%; }
 @media (max-width: 920px) {
   .contact-future__layout { gap: 3rem; grid-template-columns: 1fr 1fr; }
