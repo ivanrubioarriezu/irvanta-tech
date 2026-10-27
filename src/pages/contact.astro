@@ -22,36 +22,48 @@ import { company } from '../data/site';
         <div class="contact-future__availability"><span aria-hidden="true"></span> Un equipo preparado para ayudarte</div>
       </div>
 
-      <form class="contact-future__form" data-contact-form>
-        <div class="contact-future__form-heading">
-          <span>INICIAR UNA CONVERSACIÓN</span>
-          <span>01 — 04</span>
-        </div>
-        <label>
-          ¿En qué podemos ayudarte?
-          <select name="topic" required>
-            <option value="" disabled selected>Selecciona el motivo de contacto</option>
-            <option value="Consulta general">Consulta general</option>
-            <option value="Presupuesto">Solicitar presupuesto</option>
-            <option value="Desarrollo web">Desarrollo web</option>
-            <option value="Software a medida">Software a medida</option>
-            <option value="Datos e inteligencia artificial">Datos e inteligencia artificial</option>
-            <option value="Automatización">Automatización</option>
-            <option value="Consultoría tecnológica">Consultoría tecnológica</option>
-            <option value="Otro">Otro</option>
-          </select>
-        </label>
-        <div class="contact-future__fields">
-          <label>Nombre<input name="name" autocomplete="name" placeholder="Tu nombre" required /></label>
-          <label>Correo electrónico<input name="email" type="email" autocomplete="email" placeholder="nombre@empresa.com" required /></label>
-        </div>
-        <label>Cuéntanos brevemente<textarea name="message" rows="4" placeholder="¿Qué reto te gustaría resolver?" required></textarea></label>
-        <button class="contact-future__submit" type="submit">
-          <span data-submit-label>Enviar formulario</span>
-          <span aria-hidden="true">↗</span>
-        </button>
-        <p class="contact-future__note" data-contact-status role="status" aria-live="polite">Al enviar, tu consulta llegará directamente a nuestro equipo.</p>
-      </form>
+      <div class="contact-future__options">
+        <form class="contact-future__form" data-contact-form>
+          <div class="contact-future__form-heading">
+            <span>INICIAR UNA CONVERSACIÓN</span>
+            <span>01 — 04</span>
+          </div>
+          <label>
+            ¿En qué podemos ayudarte?
+            <select name="topic" required>
+              <option value="" disabled selected>Selecciona el motivo de contacto</option>
+              <option value="Consulta general">Consulta general</option>
+              <option value="Presupuesto">Solicitar presupuesto</option>
+              <option value="Desarrollo web">Desarrollo web</option>
+              <option value="Software a medida">Software a medida</option>
+              <option value="Datos e inteligencia artificial">Datos e inteligencia artificial</option>
+              <option value="Automatización">Automatización</option>
+              <option value="Consultoría tecnológica">Consultoría tecnológica</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </label>
+          <div class="contact-future__fields">
+            <label>Nombre<input name="name" autocomplete="name" placeholder="Tu nombre" required /></label>
+            <label>Correo electrónico<input name="email" type="email" autocomplete="email" placeholder="nombre@empresa.com" required /></label>
+          </div>
+          <label>Cuéntanos brevemente<textarea name="message" rows="3" placeholder="¿Qué reto te gustaría resolver?" required></textarea></label>
+          <button class="contact-future__submit" type="submit">
+            <span data-submit-label>Enviar formulario</span>
+            <span aria-hidden="true">↗</span>
+          </button>
+          <p class="contact-future__note" data-contact-status role="status" aria-live="polite">Al enviar, tu consulta llegará directamente a nuestro equipo.</p>
+        </form>
+        <aside class="contact-future__meeting" aria-label="Reserva una reunión">
+          <div>
+            <span>¿PREFIERES HABLARLO?</span>
+            <p>Reserva una reunión gratuita de 20 minutos para hablar sobre tu proyecto.</p>
+          </div>
+          <a href="https://calendar.app.google/eL7kRjx4SsuJNwSL9" target="_blank" rel="noopener noreferrer" aria-label="Reservar reunión gratuita de 20 minutos (se abre en una pestaña nueva)">
+            Reservar reunión
+            <span aria-hidden="true">↗</span>
+          </a>
+        </aside>
+      </div>
     </div>
     <div class="contact-future__footer content-shell" aria-hidden="true"><span>TECNOLOGÍA CON PROPÓSITO</span><span>IRVANTA TECH · EST. 2026</span></div>
   </section>
